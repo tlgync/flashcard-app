@@ -7,5 +7,6 @@
  - Backend connection
  - Login-Logout Service
  - New Words
+ - Progress bar for word counts
 
 
