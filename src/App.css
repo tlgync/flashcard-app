@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.flipCard{
+  display: flex;
+  width: 400px;
+  height: 500px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.flipCard span {
+  font-size: 21px;
+  font-weight: bold;
+}
+.svg-class{
+  filter: drop-shadow(0px 5px 3px rgb(212 72 51 / 0.4));
+}
+.svg-green{
+  filter: drop-shadow(0px 5px 3px rgb(116 227 145 / 0.4));
+}
+.svg-warning{
+  filter: drop-shadow(0px 5px 3px rgb(242 158 41 / 0.4));
 }
 
-.App-link {
-  color: #61dafb;
+.btn-back{
+  cursor: pointer;
+  color: rgba(106, 106, 106, 0.85);
+  font-weight: bold;
+  background: rgba(160, 231, 229, 0.5);
+  border: none;
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(160, 231, 229, 1)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-back:active{
+  box-shadow: none;
+}
+
+.btn-next{
+  cursor: pointer;
+  color: rgba(106, 106, 106, 0.85);
+  font-weight: bold;
+  background: rgba(251, 231, 198, 0.5);
+  border: none;
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px rgba(251, 231, 198, 1);
+}
+.btn-next:active{
+  box-shadow: none;
 }
