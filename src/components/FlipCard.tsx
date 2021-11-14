@@ -1,20 +1,23 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
 import { MdOutlineFavoriteBorder, MdOutlineFavorite } from 'react-icons/md';
 import { AiFillCheckCircle, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FaTimesCircle, FaRegTimesCircle } from 'react-icons/fa';
-import { IFlipCard } from '../Types/FlipCard';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../store';
+import { changeFav, changeFlip, changeIndex, changeKnow, flipCardSelector } from '../slices/FlipCardSlice';
 
-export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
-  const [index, setIndex] = useState<number>(0);
-  const [isFavor, setIsFavor] = useState<boolean>(false);
-  const [isKnow, setIsKnow] = useState<boolean>(false);
+export const FlipCard = ({ data }: any) => {
+  const dispatch = useAppDispatch();
+  const { index, isFavor, isFlipped, isKnow } = useSelector(flipCardSelector);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    setIsFlipped(!isFlipped);
+    dispatch(changeFlip());
   };
+
+  console.log(index < data.length - 1);
 
   return (
     <div>
@@ -28,18 +31,18 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
           onClick={handleClick}
           className="flipCard"
         >
-          <span>{data[index].tr}</span>
+          {!isFlipped && <span>{data[index].tr}</span>}
         </div>
 
         <div onClick={handleClick} className="flipCard">
-          <span>{data[index].en}</span>
+          {isFlipped && <span>{data[index].en}</span>}
         </div>
       </ReactCardFlip>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
         <button
           onClick={() => {
             if (index > 0) {
-              setIndex((prev:number) => prev - 1);
+              dispatch(changeIndex(0));
             }
           }}
           className="btn-back"
@@ -54,7 +57,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <MdOutlineFavorite
                 className="svg-class"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsFavor(!isFavor)}
+                onClick={() => dispatch(changeFav())}
                 size={27}
                 color="#d44833"
               />
@@ -63,7 +66,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <MdOutlineFavoriteBorder
                 className="svg-class"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsFavor(!isFavor)}
+                onClick={() => dispatch(changeFav())}
                 size={27}
                 color="#d44833"
               />
@@ -75,7 +78,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <AiFillCheckCircle
                 className="svg-green"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsKnow(!isKnow)}
+                onClick={() => dispatch(changeKnow())}
                 size={27}
                 color="#74e391"
               />
@@ -84,7 +87,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <AiOutlineCheckCircle
                 className="svg-green"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsKnow(!isKnow)}
+                onClick={() => dispatch(changeKnow())}
                 size={27}
                 color="#74e391"
               />
@@ -96,7 +99,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <FaTimesCircle
                 className="svg-warning"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsKnow(!isKnow)}
+                onClick={() => dispatch(changeKnow())}
                 size={27}
                 color="#f29e29"
               />
@@ -105,7 +108,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
               <FaRegTimesCircle
                 className="svg-warning"
                 style={{ cursor: 'pointer', border: 'none', borderRadius: 5 }}
-                onClick={() => setIsKnow(!isKnow)}
+                onClick={() => dispatch(changeKnow())}
                 size={27}
                 color="#f29e29"
               />
@@ -114,7 +117,7 @@ export const FlipCard = ({ isFlipped, setIsFlipped, data }: IFlipCard) => {
         <button
           onClick={() => {
             if (index < data.length - 1) {
-              setIndex((prev:number) => prev + 1);
+              dispatch(changeIndex(1));
             }
           }}
           className="btn-next"

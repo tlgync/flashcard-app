@@ -5,8 +5,10 @@
 ## To-Do
 
  - Backend connection
+ - Redux connection
  - Login-Logout Service
  - New Words
- - Progress bar for word counts
+ - <span style="text-decoration:overline">Progress bar for word counts</span>
+ 
 
 

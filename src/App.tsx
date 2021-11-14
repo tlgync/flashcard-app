@@ -1,33 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { FlipCard } from './components/FlipCard';
+import { Progressbar } from './components/Progressbar';
+import { DATA } from './data';
 
-const DATA = [
-  {
-    id: 0,
-    tr: 'bir',
-    en: 'a',
-  },
-  {
-    id: 1,
-    tr: 'gitmek',
-    en: 'go',
-  },
-  {
-    id: 2,
-    tr: 'gelmek',
-    en: 'come',
-  },
-];
-
-export const App = () => {
-  const [isFlipped, setIsFlipped] = useState<boolean>(false);
-
-  return (
-    <div className="App">
-      <FlipCard isFlipped={isFlipped} setIsFlipped={setIsFlipped} data={DATA} />
-    </div>
-  );
-};
+export const App = () => (
+  <div className="App">
+    <Progressbar data={DATA} />
+    <FlipCard data={DATA} />
+  </div>
+);
 
 export default App;

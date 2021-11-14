@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-interface ILanguageData{
+export interface ILanguageData{
     tr: string,
     en: string
 }
