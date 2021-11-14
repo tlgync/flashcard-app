@@ -61,7 +61,7 @@ export default authReducer;
 export const fetchAuth = (): AppThunk => async (dispatch: AppDispatch) => {
   const user: MyObj = await JSON.parse(localStorage.getItem('user') || '');
   const response = await fetch(
-    'http://localhost:5000/user/checkAuth', {
+    'https://flashcardss-backend.herokuapp.com/user/checkAuth', {
       method: 'GET',
       headers: user.token ? { 'Content-Type': 'application/json', Authorization: `Bearer ${user.token}` } : { 'Content-Type': 'application/json' },
     },
