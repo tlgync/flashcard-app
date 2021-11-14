@@ -1,10 +1,11 @@
 import { FC } from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Service } from '../../../services';
 
 export const ForgotPassword: FC = () => {
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+    Service.User.ForgotPassword(values).then(res => console.log(res));
   };
   return (
     <div style={{

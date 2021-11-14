@@ -7,8 +7,10 @@
  - Navbar !!!OK
  - Backend connection
  - Redux connection !!!OK
- - Login-Logout Service
+ - Login-Logout Service !!!OK
  - New Words
- - Progress bar for word counts !!!OK
+ - Progress bar for word counts !!!OK   
+ - Loading statuses will be checked.
+ - Warning messages will be checked.
 
 

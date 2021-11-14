@@ -1,9 +1,12 @@
 import { Fetch } from '../components/Fetch';
 import { BaseConfig } from '../config/BaseConfig';
-import { IAuth } from '../Types/Auth';
+import { IAuth, IForgotPassword, IRegister } from '../Types/Auth';
 
 const login = BaseConfig.api.user('user/login');
+const register = BaseConfig.api.user('user/register');
 const checkAuth = BaseConfig.api.user('user/checkAuth');
+const forgotPassword = BaseConfig.api.user('user/forgotPassword');
+const resetPassword = BaseConfig.api.user('user/resetPassword');
 
 export const UserService = {
 
@@ -17,6 +20,39 @@ export const UserService = {
     };
 
     return Fetch(login, requestOptions);
+  },
+  Register(data: IRegister) {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    return Fetch(register, requestOptions);
+  },
+  ForgotPassword(data: IForgotPassword) {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    return Fetch(forgotPassword, requestOptions);
+  },
+  ResetPassword(data: IForgotPassword) {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+
+    return Fetch(resetPassword, requestOptions);
   },
 
   /**

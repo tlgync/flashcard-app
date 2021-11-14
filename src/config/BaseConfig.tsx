@@ -1,29 +1,12 @@
 export const BaseConfig = {
-  config: {
-    debug: () => {
-      if (/.test./.test(window.location.href)) {
-        return 'test';
-      }
-      // @ts-ignore:next-line
-      // eslint-disable-next-line no-unused-vars
-      if (/param/.test((param: string) => {})) {
-        return 'debug';
-      }
-      return 'release';
-    },
-  },
   api: {
     release: {
-      user: 'https://localhost',
+      user: 'http://localhost:5000/',
     },
     debug: {
-      user: 'https://localhost',
+      user: 'http://localhost:5000/',
     },
-    test: {
-      user: 'https://localhost',
-    },
-    user: (url: string) =>
-      BaseConfig.api[BaseConfig.config.debug()].user.concat(url),
+    user: (url: string) => (BaseConfig.api.debug ? BaseConfig.api.debug.user.concat(url) : BaseConfig.api.release.user.concat(url)),
   },
   service: {
     user: {},

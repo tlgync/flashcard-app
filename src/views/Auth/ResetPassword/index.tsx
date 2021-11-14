@@ -1,20 +1,23 @@
 import { FC } from 'react';
 import { Form, Input, Button } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { LockOutlined } from '@ant-design/icons';
+import { Link, useParams } from 'react-router-dom';
+// import { useAppDispatch } from '../../../store';
+// import { fetchLogin } from '../../../slices/LoginSlice';
 import { toast } from 'react-toastify';
-import { useAppDispatch } from '../../../store';
-import { fetchRegister } from '../../../slices/RegisterSlice';
+import { Service } from '../../../services';
 
-export const Register: FC = () => {
-  const dispatch = useAppDispatch();
+export const ResetPassword: FC = () => {
+  const { id }:any = useParams();
+  // const dispatch = useAppDispatch();
   const onFinish = (values: any) => {
-    if (values.password === values.repassword) {
-      dispatch(fetchRegister(values));
-      toast('You have successfully registered.');
-      window.location.href = '/';
-    } else {
-      toast('Passwords do not match.');
-    }
+    values.id = id;
+    Service.User.ResetPassword(values).then(res => {
+      if (res && !res.error) {
+        toast('Password changed');
+        window.location.href = '/';
+      }
+    });
   };
   return (
     <div style={{
@@ -42,24 +45,6 @@ export const Register: FC = () => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="email"
-            rules={[{ required: true, message: 'Please input your Email!' }]}
-          >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
-          </Form.Item>
-          <Form.Item
-            name="name"
-            rules={[{ required: true, message: 'Please input your Name!' }]}
-          >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
-          </Form.Item>
-          <Form.Item
-            name="surname"
-            rules={[{ required: true, message: 'Please input your Surname!' }]}
-          >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Surname" />
-          </Form.Item>
-          <Form.Item
             name="password"
             rules={[{ required: true, message: 'Please input your Password!' }]}
           >
@@ -71,19 +56,22 @@ export const Register: FC = () => {
           </Form.Item>
           <Form.Item
             name="repassword"
-            rules={[{ required: true, message: 'Please input your Password Again!' }]}
+            rules={[{ required: true, message: 'Please input your Re-Password!' }]}
           >
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
-              placeholder="Password Again"
+              placeholder="Re-Password"
             />
           </Form.Item>
-
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Sign Up
+              Reset Password
             </Button>
+            <span style={{ margin: '0 10px 0 10px' }}>
+              Or
+            </span>
+            <Link to="/">Login!</Link>
           </Form.Item>
         </Form>
       </div>

@@ -1,11 +1,14 @@
 import { FC } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../store';
+import { fetchLogin } from '../../../slices/LoginSlice';
 
 export const Login: FC = () => {
+  const dispatch = useAppDispatch();
   const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
+    dispatch(fetchLogin(values));
   };
   return (
     <div style={{
@@ -49,10 +52,6 @@ export const Login: FC = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
             <Link to="/forgotPassword" className="login-form-forgot">
               Forgot password
             </Link>
