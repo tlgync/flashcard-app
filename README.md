@@ -4,6 +4,7 @@
 
 ## To-Do
 
+ - Navbar !!!OK
  - Backend connection
  - Redux connection !!!OK
  - Login-Logout Service
