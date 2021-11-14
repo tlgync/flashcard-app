@@ -1,10 +1,10 @@
 export const BaseConfig = {
   api: {
     release: {
-      user: 'http://localhost:5000/',
+      user: 'https://flashcardss-backend.herokuapp.com/',
     },
     debug: {
-      user: 'http://localhost:5000/',
+      user: 'https://flashcardss-backend.herokuapp.com/',
     },
     user: (url: string) => (BaseConfig.api.debug ? BaseConfig.api.debug.user.concat(url) : BaseConfig.api.release.user.concat(url)),
   },
