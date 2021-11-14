@@ -36,7 +36,7 @@ export const ForgotPassword: FC = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your Email!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+            <Input autoCapitalize="off" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">

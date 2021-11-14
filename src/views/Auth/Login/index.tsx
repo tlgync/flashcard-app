@@ -39,7 +39,7 @@ export const Login: FC = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your email!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+            <Input autoCapitalize="off" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="password"
@@ -49,6 +49,7 @@ export const Login: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
+              autoCapitalize="off"
             />
           </Form.Item>
           <Form.Item>

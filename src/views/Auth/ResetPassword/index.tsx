@@ -52,6 +52,7 @@ export const ResetPassword: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
+              autoCapitalize="off"
             />
           </Form.Item>
           <Form.Item
@@ -62,6 +63,7 @@ export const ResetPassword: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Re-Password"
+              autoCapitalize="off"
             />
           </Form.Item>
           <Form.Item>

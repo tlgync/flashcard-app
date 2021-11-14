@@ -45,19 +45,19 @@ export const Register: FC = () => {
             name="email"
             rules={[{ required: true, message: 'Please input your Email!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+            <Input autoCapitalize="off" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="name"
             rules={[{ required: true, message: 'Please input your Name!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
+            <Input autoCapitalize="off" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Name" />
           </Form.Item>
           <Form.Item
             name="surname"
             rules={[{ required: true, message: 'Please input your Surname!' }]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Surname" />
+            <Input autoCapitalize="off" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Surname" />
           </Form.Item>
           <Form.Item
             name="password"
@@ -67,6 +67,7 @@ export const Register: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
+              autoCapitalize="off"
             />
           </Form.Item>
           <Form.Item
@@ -77,6 +78,7 @@ export const Register: FC = () => {
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password Again"
+              autoCapitalize="off"
             />
           </Form.Item>
 
