@@ -8,7 +8,7 @@
  - Redux connection
  - Login-Logout Service
  - New Words
- - <span style="text-decoration:overline">Progress bar for word counts</span>
+ - <span style="text-decoration:underline">Progress bar for word counts</span>
  
 
 
